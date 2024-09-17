@@ -1,0 +1,329 @@
+@font-face {
+  font-family: 'Favorit Expanded';
+  src: url('./fonts/FavoritExpanded-Light.woff2') format('woff2'),
+    url('./fonts/FavoritExpanded-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Favorit Expanded';
+  src: url('./fonts/FavoritExpanded.woff2') format('woff2'),
+    url('./fonts/FavoritExpanded.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Favorit Expanded';
+  src: url('./fonts/FavoritExpanded-Bold.woff2') format('woff2'),
+    url('./fonts/FavoritExpanded-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Scto Grotesk B';
+  src: url('./fonts/SctoGroteskB-Regular.woff2') format('woff2'),
+    url('./fonts/SctoGroteskB-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Favorit Expanded', serif;
+  font-weight: 300;
+  color: black;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: #00ef54;
+}
+
+::selection {
+  background: #00ef54;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Mont', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00ef54;
+}
+
+a:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: none;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 99;
+  border-bottom: 1px solid black;
+  * {
+    text-transform: uppercase;
+  }
+  ul li {
+    font-size: 2.22vw;
+    line-height: 1;
+    display: inline-block;
+  }
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.container {
+  padding-inline: 2rem;
+}
+
+.logo_gif {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 16.52vw;
+  z-index: 3;
+  pointer-events: none;
+}
+
+main {
+  z-index: 4;
+  .banner {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    &-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+}
+.about {
+  position: relative;
+  z-index: 4;
+}
+
+.about p {
+  font-size: 4vw;
+  z-index: 4;
+  line-height: 4.278vw;
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 4.278vw;
+  display: inline-block;
+}
+
+.modelxs {
+  position: relative;
+  &-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    &:has(.model_item:hover) {
+      .model_item:not(:hover) {
+        filter: blur(10px);
+      }
+
+      // .model_item:hover {
+      //   filter: blur(10px);
+      // }
+    }
+    .model_item {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 180%;
+      z-index: 1;
+      transition: filter 300ms ease;
+    }
+  }
+
+  .model_item_wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: center;
+    background-size: cover;
+  }
+}
+
+footer {
+  border-top: 1px solid black;
+  .footer-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1rem;
+  }
+}
+
+// contact
+
+#main-contact {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+  padding-top: 80px;
+  .contact-links {
+    border-bottom: 1px solid black;
+    * {
+      font-size: 2.225vw;
+      text-transform: uppercase;
+      line-height: 2.495vw;
+    }
+    a:hover,
+    a:focus {
+      color: initial;
+    }
+  }
+  .contact-form-wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    > div:not(:last-child) {
+      border-bottom: 1px solid black;
+      @media screen and (min-width: 750px) {
+        border-bottom: none;
+        border-right: 1px solid black;
+      }
+    }
+    .contact-instructions {
+      padding: 1rem;
+      > *:not(:last-child) {
+        margin-bottom: 1.9vw;
+      }
+      h3 {
+        font-size: 2.225vw;
+        line-height: 2.495vw;
+        font-weight: normal;
+      }
+      p,
+      ul li {
+        font-family: 'Scto Grotesk B', sans-serif;
+        font-size: 1.636vw;
+        line-height: 1.839vw;
+      }
+      .hover-instructions {
+        text-transform: uppercase;
+        text-decoration: underline;
+      }
+    }
+    .contact-form {
+      font-size: 2.225vw;
+      text-transform: uppercase;
+      line-height: 2.225vw;
+      .form-input {
+        padding: 0.7vw 0.5vw 0.4vw 0.5vw;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        column-gap: 0.8vw;
+        label {
+          white-space: nowrap;
+        }
+        input[type='text'],
+        input[type='number'] {
+          width: 100%;
+          color: #00ef54;
+          font-size: inherit;
+          text-transform: inherit;
+        }
+        input[type='number'] {
+          -moz-appearance: textfield;
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+      }
+      .form-input-group {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        column-gap: 0.8vw;
+        input {
+          max-width: 5.3vw;
+        }
+      }
+      > div:not(:last-child) {
+        border-bottom: 1px solid black;
+      }
+    }
+  }
+}
+
+input {
+  border: none;
+}
