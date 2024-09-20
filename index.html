@@ -10,10 +10,10 @@
     <nav>
       <ul class="nav-menu">
         <li>
-          <a href="#about">About</a>
+          <a href="/#about">About</a>
         </li>
         <li>
-          <a href="#modelxs">Modelxs</a>
+          <a href="/#modelxs">Modelxs</a>
         </li>
         <li>
           <a href="/casting">Casting</a>
@@ -327,5 +327,62 @@
         </ul>
       </div>
     </footer>
+    <script>
+      const apiUrl = 'https://guerxs.cdn.prismic.io/api/v2';
+      let ref;
+
+      // Función para hacer la solicitud inicial a la API para obtener la ref
+      async function fetchPrismicData() {
+        try {
+          const response = await fetch(apiUrl);
+
+          // Verifica si la solicitud fue exitosa
+          if (!response.ok) {
+            throw new Error(`Error: ${response.status}`);
+          }
+
+          // Convierte la respuesta a JSON
+          const data = await response.json();
+
+          // Muestra los datos en la consola
+          console.log('Datos iniciales:', data);
+
+          // Obtén el ref
+          ref = data.refs[0].ref;
+          console.log('Ref obtenido:', ref);
+
+          // Ahora realiza la segunda solicitud usando el ref
+          await fetchDocuments(ref);
+        } catch (error) {
+          console.error('Error al conectarse a la API de Prismic:', error);
+        }
+      }
+
+      // Función para hacer la segunda solicitud con el ref obtenido
+      async function fetchDocuments(ref) {
+        const searchUrl = `https://guerxs.cdn.prismic.io/api/v2/documents/home?ref=${ref}`;
+        try {
+          const response = await fetch(searchUrl);
+
+          // Verifica si la solicitud fue exitosa
+          if (!response.ok) {
+            throw new Error(
+              `Error en la búsqueda de documentos: ${response.status}`
+            );
+          }
+
+          // Convierte la respuesta a JSON
+          const data = await response.json();
+
+          // Muestra los documentos obtenidos en la consola
+          console.log('Documentos obtenidos:', data);
+        } catch (error) {
+          console.error('Error al buscar documentos:', error);
+        }
+      }
+
+      // Llamada a la función para obtener el ref y luego buscar documentos
+      fetchPrismicData();
+    </script>
   </body>
 </html>
